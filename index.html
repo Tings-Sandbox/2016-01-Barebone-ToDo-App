@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Ting's To Do List </title>
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+</head>
+<body>
+
+  <h1>Ting's To Do List </h1>
+  <ul class="toDoList">
+  </ul>
+  <input class="newTask"> 
+  <button> New Item </button>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+
+    //add li to list
+    var addItem = function(newTask){
+      $('.toDoList').append('<li class="task">'+ newTask +'</li>');
+    }
+
+    //remove li from list
+    var removeItem = function(target){
+      target.remove();
+    }
+
+    //button clicked, then add list
+    $('button').click(function(){
+      var newTask = $('.newTask').val();
+      addItem(newTask);
+      $('.newTask').val('');
+    })
+
+    //item clicked, then remove list
+    $('body').on('click', '.task', function(evt){
+      removeItem(evt.target);
+    })
+
+
+  })
+  </script>
+
+</body>
+</html>
